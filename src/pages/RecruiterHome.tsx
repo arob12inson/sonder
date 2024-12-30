@@ -29,7 +29,7 @@ const JobsTable = ({ jobs }: { jobs: Job[] }) => {
     const navigate = useNavigate();
 
     return (
-        <div className="w-1/2 mx-auto mt-4 overflow-x-auto shadow-lg rounded-lg">
+        <div className="w-full mx-auto mt-4 overflow-x-auto shadow-lg rounded-lg">
             <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-100 rounded-t-lg sticky top-0">
                 <tr>
@@ -74,10 +74,11 @@ const RecruiterHome = () => {
         {jobId: 14, date: new Date, title: "Marketing Intern", description: "We are looking for a software engineer.", status: JobPostingStatus.COMPLETED},
         {jobId: 15, date: new Date, title: "Business Development Intern", description: "We are looking for a software engineer.", status: JobPostingStatus.IN_PROGRESS},
     ];
+    // const jobs = null;
 
     return (
-        <div className="w-full h-full flex flex-col p-6 ">
-            <h1 className="text-grey-900 text-lg my-4">My Jobs</h1>
+        <div className="w-1/2 h-full flex flex-col p-6 ">
+            <h1 className="ml-text-grey-900 text-lg my-4">My Jobs</h1>
             {jobs === null ? <EmptyRecruiterHome /> : <JobsTable jobs={jobs} />}
         </div>
     );
