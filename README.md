@@ -48,3 +48,7 @@ export default tseslint.config({
   },
 })
 ```
+
+# Design
+- [Color Palate](https://www.realtimecolors.com/?colors=0f0e19-f1f0f9-433acf-928df0-5148fa&fonts=Inter-Inter)
+- Indigo (Primary), Blue (Accent), Gray (Gray)
