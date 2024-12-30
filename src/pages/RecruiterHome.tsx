@@ -1,3 +1,6 @@
+// import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 interface Job {
     jobId: number;
     date: Date
@@ -23,6 +26,8 @@ const EmptyRecruiterHome = () => {
 }
 
 const JobsTable = ({ jobs }: { jobs: Job[] }) => {
+    const navigate = useNavigate();
+
     return (
         <div className="w-1/2 mx-auto mt-4 overflow-x-auto shadow-lg rounded-lg">
             <table className="min-w-full divide-y divide-gray-200">
@@ -35,7 +40,7 @@ const JobsTable = ({ jobs }: { jobs: Job[] }) => {
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
                 {jobs.map((job) => (
-                    <tr className="hover:bg-gray-100" key={job.jobId}>
+                    <tr className="hover:bg-gray-100" key={job.jobId} onClick={() => navigate(`/recruiter/${job.jobId}`)}>
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{job.title}</td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{job.date.toLocaleDateString()}</td>
                         <td className="px-6 py-4 whitespace-nowrap text-left font-medium">
