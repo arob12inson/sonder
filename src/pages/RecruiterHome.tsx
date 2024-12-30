@@ -26,7 +26,7 @@ const JobsTable = ({ jobs }: { jobs: Job[] }) => {
     return (
         <div className="w-1/2 mx-auto mt-4 overflow-x-auto shadow-lg rounded-lg">
             <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-100 rounded-t-lg">
+            <thead className="bg-gray-100 rounded-t-lg sticky top-0">
                 <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date Posted</th>
@@ -54,6 +54,18 @@ const JobsTable = ({ jobs }: { jobs: Job[] }) => {
 const RecruiterHome = () => { 
     const jobs = [
         {id: 1, date: new Date, title: "Software Engineer Intern", description: "We are looking for a software engineer.", status: JobPostingStatus.INCOMPLETE},
+        {id: 1, date: new Date, title: "Marketing Intern", description: "We are looking for a software engineer.", status: JobPostingStatus.COMPLETED},
+        {id: 1, date: new Date, title: "Business Development Intern", description: "We are looking for a software engineer.", status: JobPostingStatus.IN_PROGRESS},
+        {id: 1, date: new Date, title: "Software Engineer Intern", description: "We are looking for a software engineer.", status: JobPostingStatus.INCOMPLETE},
+        {id: 1, date: new Date, title: "Software Engineer Intern", description: "We are looking for a software engineer.", status: JobPostingStatus.INCOMPLETE},
+        {id: 1, date: new Date, title: "Software Engineer Intern", description: "We are looking for a software engineer.", status: JobPostingStatus.INCOMPLETE},
+        {id: 1, date: new Date, title: "Software Engineer Intern", description: "We are looking for a software engineer.", status: JobPostingStatus.INCOMPLETE},
+        {id: 1, date: new Date, title: "Marketing Intern", description: "We are looking for a software engineer.", status: JobPostingStatus.COMPLETED},
+        {id: 1, date: new Date, title: "Business Development Intern", description: "We are looking for a software engineer.", status: JobPostingStatus.IN_PROGRESS},
+        {id: 1, date: new Date, title: "Marketing Intern", description: "We are looking for a software engineer.", status: JobPostingStatus.COMPLETED},
+        {id: 1, date: new Date, title: "Business Development Intern", description: "We are looking for a software engineer.", status: JobPostingStatus.IN_PROGRESS},
+        {id: 1, date: new Date, title: "Marketing Intern", description: "We are looking for a software engineer.", status: JobPostingStatus.COMPLETED},
+        {id: 1, date: new Date, title: "Business Development Intern", description: "We are looking for a software engineer.", status: JobPostingStatus.IN_PROGRESS},
         {id: 1, date: new Date, title: "Marketing Intern", description: "We are looking for a software engineer.", status: JobPostingStatus.COMPLETED},
         {id: 1, date: new Date, title: "Business Development Intern", description: "We are looking for a software engineer.", status: JobPostingStatus.IN_PROGRESS},
     ];
