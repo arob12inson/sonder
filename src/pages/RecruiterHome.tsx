@@ -74,7 +74,6 @@ const RecruiterHome = () => {
         {jobId: 14, date: new Date, title: "Marketing Intern", description: "We are looking for a software engineer.", status: JobPostingStatus.COMPLETED},
         {jobId: 15, date: new Date, title: "Business Development Intern", description: "We are looking for a software engineer.", status: JobPostingStatus.IN_PROGRESS},
     ];
-    // const jobs = null;
 
     return (
         <div className="w-full h-full flex flex-col p-6 ">
@@ -82,10 +81,10 @@ const RecruiterHome = () => {
             {jobs === null ? <EmptyRecruiterHome /> : 
             <div className="grid grid-cols-4 gap-4">
                 <div className="col-start-1 col-end-2">
-                    <div className="bg-white shadow-lg rounded-lg p-4">
-                        <h2 className="text-gray-900 text-lg">Post a Job</h2>
+                    <div className="bg-white shadow-lg rounded-lg p-6">
+                        <h2 className="text-gray-900 text-base font-bold">Post a Job</h2>
                         <p className="text-gray-900 text-base">Create a new job posting</p>
-                        <button className="bg-gray-600 text-white px-4 py-2 rounded-lg my-4">Post a Job</button>
+                        <button className="bg-gray-600 text-white px-4 py-2 rounded-lg mt-6">Post a Job</button>
                     </div>
                 </div>
                 <div className="w-full col-start-2 col-end-4">
