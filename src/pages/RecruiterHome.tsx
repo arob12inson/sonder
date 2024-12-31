@@ -1,19 +1,5 @@
-// import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
-interface Job {
-    jobId: number;
-    date: Date
-    title: string;
-    description: string;
-    status: JobPostingStatus;
-}
-
-enum JobPostingStatus {
-    INCOMPLETE = "Incomplete",
-    IN_PROGRESS = "In Progress",
-    COMPLETED = "Completed",
-}
+import { Job, JobPostingStatus } from "../types";
 
 const EmptyRecruiterHome = () => {
     return (
