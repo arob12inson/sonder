@@ -29,7 +29,7 @@ const JobsTable = ({ jobs }: { jobs: Job[] }) => {
     const navigate = useNavigate();
 
     return (
-        <div className="w-full mx-auto mt-4 overflow-x-auto shadow-lg rounded-lg">
+        <div className="overflow-x-auto shadow-lg rounded-lg">
             <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-100 rounded-t-lg sticky top-0">
                 <tr>
@@ -77,9 +77,22 @@ const RecruiterHome = () => {
     // const jobs = null;
 
     return (
-        <div className="w-1/2 h-full flex flex-col p-6 ">
-            <h1 className="ml-text-grey-900 text-lg my-4">My Jobs</h1>
-            {jobs === null ? <EmptyRecruiterHome /> : <JobsTable jobs={jobs} />}
+        <div className="w-full h-full flex flex-col p-6 ">
+            <h1 className="text-grey-900 text-lg my-4">My Jobs</h1>
+            {jobs === null ? <EmptyRecruiterHome /> : 
+            <div className="grid grid-cols-4 gap-4">
+                <div className="col-start-1 col-end-2">
+                    <div className="bg-white shadow-lg rounded-lg p-4">
+                        <h2 className="text-gray-900 text-lg">Post a Job</h2>
+                        <p className="text-gray-900 text-base">Create a new job posting</p>
+                        <button className="bg-gray-600 text-white px-4 py-2 rounded-lg my-4">Post a Job</button>
+                    </div>
+                </div>
+                <div className="w-full col-start-2 col-end-4">
+                    <JobsTable jobs={jobs} />
+                </div>
+            </div>
+            }
         </div>
     );
 }
