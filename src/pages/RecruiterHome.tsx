@@ -29,7 +29,7 @@ const JobsTable = ({ jobs }: { jobs: Job[] }) => {
     const navigate = useNavigate();
 
     return (
-        <div className="overflow-x-auto shadow-lg rounded-lg">
+        <div className="h-1/2 overflow-x-auto shadow-lg rounded-lg">
             <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-100 rounded-t-lg sticky top-0">
                 <tr>
