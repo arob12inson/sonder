@@ -9,3 +9,7 @@
 ::-webkit-scrollbar {
     width: 0px; /* Adjust to your preference */
 }
+
+table {
+    scrollbar-width: none; /* Firefox */
+}
