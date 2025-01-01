@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Job, JobPostingStatus } from "../types";
+import { Job, JobPostingStatus, } from "../types";
 
 const CreateJobForm = () => {
     const [jobFormData, setJobFormData] = useState<Job>({
@@ -7,7 +7,7 @@ const CreateJobForm = () => {
         date: new Date,
         title: "",
         description: "",
-        status: JobPostingStatus.INCOMPLETE
+        status: JobPostingStatus.IN_PROGRESS
     });
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -22,8 +22,8 @@ const CreateJobForm = () => {
     }
 
     return (
-        <div className="max-w-2xl p-6 bg-white rounded-lg shadow-md">
-            <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="w-full p-12 bg-white rounded-lg shadow-md">
+            <form onSubmit={handleSubmit} className="space-y-8">
                 <div className="flex flex-col">
                     <label className="text-gray-700 font-medium mb-2">Job Title:
                         <input 
@@ -32,7 +32,7 @@ const CreateJobForm = () => {
                             value={jobFormData.title} 
                             onChange={handleChange}
                             required
-                            className="w-full p-2 border rounded-md"
+                            className="w-full p-2 border rounded-md text-black"
                         />
                     </label>
                 </div>
@@ -45,18 +45,6 @@ const CreateJobForm = () => {
                             required
                             className="w-full p-2 border rounded-md"
                             rows={4}
-                        />
-                    </label>
-                </div>
-                <div className="flex flex-col">
-                    <label className="text-gray-700 font-medium mb-2">Date:
-                        <input 
-                            type="date" 
-                            name="date" 
-                            value={jobFormData.date.toISOString().split('T')[0]}
-                            onChange={(e) => setJobFormData({...jobFormData, date: new Date(e.target.value)})}
-                            required
-                            className="w-full p-2 border rounded-md"
                         />
                     </label>
                 </div>
@@ -75,12 +63,20 @@ const CreateJobForm = () => {
                         </select>
                     </label>
                 </div>
-                <button 
-                    type="submit"
-                    className="w-full bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600 shadow-md"
-                >
-                    Create Job
-                </button>
+                <div className="flex justify-between">
+                    <button 
+                        type="submit"
+                        className=" bg-gray-500 text-white py-3 px-5 rounded-lg hover:bg-gray-600 shadow-md"
+                    >
+                        Create Job
+                    </button>
+                    <button 
+                        type="submit"
+                        className=" bg-white text-gray-500 rounded-lg hover:text-red-500"
+                    >
+                        Cancel
+                    </button>
+                </div>
             </form>
         </div>
     );
@@ -90,8 +86,10 @@ const CreateJobForm = () => {
 const CreateJob = () => {
     return (
         <div className="w-full h-full flex flex-col p-6">
-            <h1 className="text-grey-900 text-lg my-4">Create Job</h1>
-            <CreateJobForm />
+            <div className="w-1/2 h-full flex flex-col mx-auto">
+                <h1 className="text-grey-900 text-xl my-4">Create Job</h1>
+                <CreateJobForm />
+            </div>
         </div>
     );
 };  
