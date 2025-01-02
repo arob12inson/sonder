@@ -1,0 +1,13 @@
+{
+  "name": "sonder",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "Monorepo for the Sonder App",
+  "workspaces":["frontend/sonder"]
+}
