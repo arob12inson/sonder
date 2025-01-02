@@ -10,5 +10,10 @@
   "author": "",
   "license": "ISC",
   "description": "Monorepo for the Sonder App",
-  "workspaces":["frontend"]
+  "workspaces": [
+    "frontend"
+  ],
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
 }
