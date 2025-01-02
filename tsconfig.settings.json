@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES6",               // Target ECMAScript version
+    "module": "ESNext",            // Use modern JavaScript modules
+    "strict": true,                // Enable strict type checking
+    "esModuleInterop": true,       // Allows default imports from CommonJS modules
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "Node",    // Resolve node_modules imports
+    "resolveJsonModule": true,     // Allows importing JSON files
+    "isolatedModules": true,       // Ensure per-file transpilation
+    "baseUrl": ".",                // Base URL for resolving paths
+    "paths": {
+      "@shared/*": ["shared/src/*"] // Example alias for shared code (if you have shared code)
+    }
+  }
+}
