@@ -7,7 +7,7 @@ wide
 ## Running the App
 To run the app, run the following shell commands:
 
-```
+```bash
 npm install # first time only
 npm run dev
 ```
