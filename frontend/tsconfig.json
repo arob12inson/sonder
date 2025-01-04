@@ -1,5 +1,5 @@
 {
-  "extends": "../tsconfig.settings.json", // If there's a shared config at the monorepo root
+  "extends": "../tsconfig.json", // If there's a shared config at the monorepo root
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },

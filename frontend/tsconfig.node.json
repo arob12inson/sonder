@@ -1,12 +1,9 @@
 {
-  "extends": "../tsconfig.settings.json",
+  "extends": "../tsconfig.json",
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
-    "target": "ES2022",
     "lib": ["ES2022"], // Use ES2022 standard libraries
-    "module": "CommonJS", // Node.js typically uses CommonJS
     "noEmit": true,
-    "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,

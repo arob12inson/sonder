@@ -1,5 +1,20 @@
 {
   "files": [],
+  "compilerOptions": {
+    "target": "ES2022",               // Target ECMAScript version
+    "module": "CommonJS",            // Use modern JavaScript modules
+    "lib": ["ES2022"],               // Use the latest ECMAScript features
+    "strict": true,                // Enable strict type checking
+    "esModuleInterop": true,       // Allows default imports from CommonJS modules
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "Node",    // Resolve node_modules imports
+    "resolveJsonModule": true,     // Allows importing JSON files
+    "isolatedModules": true,       // Ensure per-file transpilation
+    "baseUrl": ".",                // Base URL for resolving paths
+    "paths": {
+      "@shared/*": ["shared/src/*"] // Example alias for shared code (if you have shared code)
+    }
+  },
   "references": [
     { "path": "./frontend" },
     { "path": "./backend"}
