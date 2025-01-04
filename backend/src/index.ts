@@ -1,10 +1,13 @@
 import express, { Express, Request, Response } from "express";
-const dotenv = require("dotenv");
+import dotenv from "dotenv";
+const cors = require("cors");
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+app.use(cors());
 
 app.get("/", (req: Request, res: Response) => {
     res.send("Hello, world!\n");
