@@ -3,6 +3,7 @@
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "jsx": "react-jsx",
+    "lib": ["dom"],
     "noEmit": true, // Skip emitting files (for development only)
     "noUnusedLocals": true,
     "noUnusedParameters": true,
