@@ -11,7 +11,8 @@
   "license": "ISC",
   "description": "Monorepo for the Sonder App",
   "workspaces": [
-    "frontend"
+    "frontend",
+    "backend"
   ],
   "devDependencies": {
     "typescript": "^5.7.2"
