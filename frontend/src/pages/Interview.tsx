@@ -28,7 +28,7 @@ const Interview = () => {
                 value={command} 
                 onChange={handleInputChange} 
                 placeholder="Enter command" 
-            />
+            /> <br />
             <button onClick={handleSubmit}>Send Command</button>
             <p>{data}</p>
         </div>
