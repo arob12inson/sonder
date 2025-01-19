@@ -21,7 +21,7 @@ const Interview = () => {
     };
 
     return (
-        <div>
+        <div className='flex flex-col items-center w-[800px]'>
             <h1>Interview</h1>
             <input 
                 type="text" 
