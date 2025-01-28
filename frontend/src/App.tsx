@@ -6,6 +6,7 @@ import JobHome from "./pages/JobHome.tsx";
 import CreateJob from "./pages/CreateJob.tsx";
 import CoffeeChat from "./pages/CoffeeChat/CoffeeChat.tsx";
 import EndInterviewPage from "./pages/CoffeeChat/EndInterviewPage";
+import AudioCaptureTest from "./pages/CoffeeChat/AudioCaptureTest.tsx";
 
 import './App.css';
 
@@ -21,6 +22,8 @@ function App() {
         <Route path="/recruiter/job/new" element={<CreateJob />} />
         <Route path="/chat/*" element={<CoffeeChat />} />
         <Route path="/chat/end" element={<EndInterviewPage />} />
+        <Route path="/audio-test" element={<AudioCaptureTest />} />
+        
       </Routes>
     </BrowserRouter>
   )
