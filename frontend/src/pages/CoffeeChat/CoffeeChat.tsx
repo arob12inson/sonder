@@ -29,64 +29,51 @@ const ApplicantFields: React.FC<ApplicantFieldsProps> = ({ setIdentifactionState
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-
-    const data = new FormData();
-    for (let key in formData) {
-      data.append(key, formData[key as keyof FormData]);
-    }
     setIdentifactionState(true);
 
     // TODO: Send form data to the backend
   };
 
   return (
-    <div className="flex flex-col items-center text-center">
-      <h1 className="text-dark-grey text-4xl m-3">Enter your information</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <input
-            className="rounded-lg p-3 my-3 placeholder:text-light-grey"
-            type="text"
-            id="firstName"
-            name="firstName"
-            placeholder="First Name"
-            value={formData.firstName}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <input
-            className="rounded-lg p-3 my-3 placeholder:text-light-grey"
-            type="text"
-            id="lastName"
-            name="lastName"
-            placeholder="Last Name"
-            value={formData.lastName}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <input
-            className="rounded-lg p-3 my-3 placeholder:text-light-grey"
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <button
-            className="rounded-lg p-3 my-3 text-white bg-dark-green hover:bg-light-green"
-            type="submit"
-          >
-            Submit Application
-          </button>
-        </div>
+    <div className="flex flex-col items-center text-center max-w-md mx-auto bg-gray-200 shadow-lg rounded-lg p-6">
+      <h1 className="text-gray-800 text-2xl font-bold mb-4">Enter Your Information</h1>
+      <form onSubmit={handleSubmit} className="w-full space-y-4">
+        <input
+          className="w-full rounded-lg border border-gray-300 p-3 placeholder-gray-500 focus:ring-2 focus:ring-green-500 focus:outline-none"
+          type="text"
+          id="firstName"
+          name="firstName"
+          placeholder="First Name"
+          value={formData.firstName}
+          onChange={handleChange}
+          required
+        />
+        <input
+          className="w-full rounded-lg border border-gray-300 p-3 placeholder-gray-500 focus:ring-2 focus:ring-green-500 focus:outline-none"
+          type="text"
+          id="lastName"
+          name="lastName"
+          placeholder="Last Name"
+          value={formData.lastName}
+          onChange={handleChange}
+          required
+        />
+        <input
+          className="w-full rounded-lg border border-gray-300 p-3 placeholder-gray-500 focus:ring-2 focus:ring-green-500 focus:outline-none"
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+        <button
+          className="w-full rounded-lg bg-green-600 text-white py-3 font-medium hover:bg-green-700 transition"
+          type="submit"
+        >
+          Submit Application
+        </button>
       </form>
     </div>
   );
@@ -112,8 +99,8 @@ const WebCamComponent: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center text-center w-screen h-screen">
-      <div className="rounded-lg bg-dark-grey my-3 aspect-[4/3] h-3/4">
+    <div className="flex flex-col justify-center items-center text-center w-screen h-screen bg-gray-50">
+      <div className="rounded-lg bg-gray-800 overflow-hidden my-3 aspect-[4/3] h-3/4">
         <Webcam
           className={`rounded-lg transition-all duration-500 ease-in-out 
           ${interviewState === InterviewState.NOT_STARTED && "h-full w-full"}
@@ -122,7 +109,7 @@ const WebCamComponent: React.FC = () => {
       </div>
       {interviewState === InterviewState.NOT_STARTED && (
         <button
-          className="rounded-lg p-3 my-3 text-white bg-dark-green hover:bg-light-green"
+          className="rounded-lg px-6 py-3 my-3 text-white bg-green-600 hover:bg-green-700 font-medium transition"
           onClick={startInterview}
         >
           Start Interview
@@ -130,7 +117,7 @@ const WebCamComponent: React.FC = () => {
       )}
       {interviewState === InterviewState.STARTED && (
         <button
-          className="rounded-lg p-3 my-3 text-white bg-dark-green hover:bg-light-green"
+          className="rounded-lg px-6 py-3 my-3 text-white bg-red-600 hover:bg-red-700 font-medium transition"
           onClick={endInterview}
         >
           End Interview
@@ -144,9 +131,22 @@ const CoffeeChat: React.FC = () => {
   const [isIdentified, setIdentifactionState] = useState<boolean>(false);
 
   return (
-    <div className="flex flex-col min-h-screen min-w-screen justify-center items-center bg-white">
+    <div className="flex flex-col min-h-screen min-w-screen justify-center items-center bg-grey-50">
       {!isIdentified ? (
-        <ApplicantFields setIdentifactionState={setIdentifactionState} />
+        <div className="flex flex-row justify-center items-center w-full h-full max-w-6xl">
+          {/* Left Side - Image */}
+          <div className="flex-1 flex justify-center items-center">
+            <img
+              src="https://wallpapers.com/images/hd/job-interview-animated-illustration-res1kxrwcs75bt2q.jpg"
+              alt="Placeholder"
+              className="rounded-lg w-full h-full object-cover"
+            />
+          </div>
+          {/* Right Side - Form */}
+          <div className="flex-1 flex justify-center items-center">
+            <ApplicantFields setIdentifactionState={setIdentifactionState} />
+          </div>
+        </div>
       ) : (
         <WebCamComponent />
       )}
