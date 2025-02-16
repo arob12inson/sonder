@@ -6,6 +6,7 @@ import { Server as SocketIOServer } from "socket.io";
 import indexRouter from "./routes/indexRouter";
 import recruiterRouter from "./routes/recruiterRouter";
 import audioSocket from "./routes/audioSocket";   // Our Socket.IO handler
+import analyzeRouter from "./routes/analysisRouter"; // New analyze endpoint
 
 dotenv.config();
 
@@ -27,6 +28,8 @@ app.use(express.json());
 // Traditional REST API routes (if needed)
 app.use("/", indexRouter);
 app.use("/recruiter", recruiterRouter);
+app.use("/analyze", analyzeRouter);
+
 
 // Set up Socket.IO for real-time audio streaming
 io.on("connection", (socket) => {

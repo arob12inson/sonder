@@ -9,6 +9,7 @@ import EndInterviewPage from "./pages/CoffeeChat/EndInterviewPage";
 import AudioCaptureTest from "./pages/CoffeeChat/AudioCaptureTest.tsx";
 
 import './App.css';
+import AnalyzeAudio from "./pages/CoffeeChat/AnalyzeAudio.tsx";
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/chat/*" element={<CoffeeChat />} />
         <Route path="/chat/end" element={<EndInterviewPage />} />
         <Route path="/audio-test" element={<AudioCaptureTest />} />
+        <Route path="/analyze" element={<AnalyzeAudio />} />
         
       </Routes>
     </BrowserRouter>
