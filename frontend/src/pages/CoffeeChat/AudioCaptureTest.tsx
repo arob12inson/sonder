@@ -47,7 +47,6 @@ const AudioCaptureTest: React.FC = () => {
 
     // Local flag to ensure we emit only once per recorder
     let hasEmitted = false;
-
     const chunkRecorder = new MediaRecorder(stream, { mimeType: "audio/webm" });
     currentChunkRecorderRef.current = chunkRecorder;
 
@@ -75,7 +74,7 @@ const AudioCaptureTest: React.FC = () => {
 
     chunkRecorder.start();
     console.log("[Chunk] Chunk recorder started.");
-    // Set a timer to stop this recorder after CHUNK_DURATION
+    // Set a timer to stop this recorder after CHUNK_DURATION ms
     chunkTimerRef.current = setTimeout(() => {
       if (chunkRecorder.state !== "inactive") {
         console.log("[Chunk] Timer reached, requesting data and stopping recorder.");
@@ -93,6 +92,9 @@ const AudioCaptureTest: React.FC = () => {
       console.log("[StartRecording] Media stream obtained.");
       continuousStreamRef.current = stream;
 
+      // Emit "audio-start" so the backend creates the session folder and stream.
+      socket.emit("audio-start");
+
       // Start continuous recorder (for complete file)
       startContinuousRecorder(stream);
 
@@ -108,20 +110,26 @@ const AudioCaptureTest: React.FC = () => {
     }
   };
 
+  // Updated stopRecording() with flush calls for both continuous and chunk recorders.
   const stopRecording = () => {
     console.log("[StopRecording] Stopping recording.");
-    // Stop continuous recorder
+
+    // Flush and stop the continuous recorder
     if (continuousRecorderRef.current && continuousRecorderRef.current.state !== "inactive") {
+      console.log("[StopRecording] Requesting final data from continuous recorder.");
+      continuousRecorderRef.current.requestData();
       console.log("[StopRecording] Stopping continuous recorder.");
       continuousRecorderRef.current.stop();
       continuousRecorderRef.current = null;
     }
+
     // Stop further chunk recording
     recordingFlagRef.current = false;
     if (chunkTimerRef.current) {
       clearTimeout(chunkTimerRef.current);
       chunkTimerRef.current = null;
     }
+
     // Flush the current chunk recorder if active
     if (currentChunkRecorderRef.current && currentChunkRecorderRef.current.state !== "inactive") {
       console.log("[StopRecording] Flushing current chunk recorder.");
@@ -129,7 +137,8 @@ const AudioCaptureTest: React.FC = () => {
       currentChunkRecorderRef.current.stop();
       currentChunkRecorderRef.current = null;
     }
-    // Allow a final delay to let any ondataavailable events fire
+
+    // Allow a final delay for any ondataavailable events to fire
     setTimeout(() => {
       if (continuousStreamRef.current) {
         console.log("[StopRecording] Stopping all tracks on media stream.");
