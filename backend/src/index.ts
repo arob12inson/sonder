@@ -1,22 +1,39 @@
-import express, { Express, Request, Response } from "express";
+import express, { Express } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import http from "http";
+import { Server as SocketIOServer } from "socket.io";
 import indexRouter from "./routes/indexRouter";
 import recruiterRouter from "./routes/recruiterRouter";
-import audioRouter from "./routes/audioRouter";
+import audioSocket from "./routes/audioSocket";   // Our Socket.IO handler
 
 dotenv.config();
 
-const app = express();
+const app: Express = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+// Create an HTTP server and attach Express app
+const server = http.createServer(app);
 
+// Initialize Socket.IO
+const io = new SocketIOServer(server, {
+  cors: { origin: "*" },
+});
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+
+// Traditional REST API routes (if needed)
 app.use("/", indexRouter);
 app.use("/recruiter", recruiterRouter);
-app.use("/audio", audioRouter);
 
+// Set up Socket.IO for real-time audio streaming
+io.on("connection", (socket) => {
+  console.log(`Client connected: ${socket.id}`);
+  audioSocket(socket);
+});
 
-app.listen(PORT, () => {
-    console.log(`[server]: server is running on http://localhost:${PORT}!`);
-})
+server.listen(PORT, () => {
+  console.log(`[server]: Server is running on http://localhost:${PORT}!`);
+});
